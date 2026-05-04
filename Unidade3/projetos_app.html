@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Projetos - Unidade 3</title>
+  <style>
+    :root {
+      --udf-blue: #003366;
+      --udf-red: #CC0000;
+      --udf-white: #FFFFFF;
+      --udf-gray: #f5f5f5;
+      --udf-dark-gray: #333333;
+      --success: #28a745;
+      --warning: #ffc107;
+      --info: #17a2b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--udf-gray) 0%, var(--udf-white) 100%);
+      color: var(--udf-dark-gray);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--udf-blue) 0%, #002244 100%);
+      color: var(--udf-white);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background-color: var(--udf-white);
+      border: 2px solid var(--udf-blue);
+      color: var(--udf-blue);
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      background-color: var(--udf-blue);
+      color: var(--udf-white);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background-color: var(--udf-red);
+      border-color: var(--udf-red);
+      color: var(--udf-white);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .card {
+      background-color: var(--udf-white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid var(--udf-blue);
+    }
+
+    .card.active {
+      border-left-color: var(--success);
+    }
+
+    .card.pending {
+      border-left-color: var(--warning);
+    }
+
+    .card h3 {
+      color: var(--udf-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 2rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .meta-label {
+      font-weight: bold;
+      color: var(--udf-red);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .badge.status-active {
+      background-color: var(--success);
+      color: var(--udf-white);
+    }
+
+    .badge.status-pending {
+      background-color: var(--warning);
+      color: var(--udf-dark-gray);
+    }
+
+    .badge.status-completed {
+      background-color: var(--info);
+      color: var(--udf-white);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--udf-blue);
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid var(--udf-gray);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--udf-blue);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background-color: var(--udf-red);
+      color: var(--udf-white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #b30000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(204, 0, 0, 0.3);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0 2rem 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--udf-blue);
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.25rem;
+      top: 0.5rem;
+      width: 15px;
+      height: 15px;
+      background-color: var(--udf-red);
+      border-radius: 50%;
+      border: 3px solid var(--udf-white);
+    }
+
+    .timeline-content {
+      background-color: var(--udf-gray);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    .timeline-content h4 {
+      color: var(--udf-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .projeto-card {
+      background-color: var(--udf-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .projeto-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .projeto-header {
+      background: linear-gradient(135deg, var(--udf-blue) 0%, var(--udf-red) 100%);
+      color: var(--udf-white);
+      padding: 1rem;
+    }
+
+    .projeto-header h4 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .projeto-body {
+      padding: 1rem;
+    }
+
+    .projeto-body p {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: var(--udf-white);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 4px solid var(--udf-blue);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--udf-red);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--udf-dark-gray);
+      font-weight: bold;
+    }
+
+    .alert {
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border-left: 4px solid;
+    }
+
+    .alert.success {
+      background-color: #d4edda;
+      border-color: var(--success);
+      color: #155724;
+    }
+
+    .alert.info {
+      background-color: #d1ecf1;
+      border-color: var(--info);
+      color: #0c5460;
+    }
+
+    footer {
+      background-color: var(--udf-blue);
+      color: var(--udf-white);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--udf-dark-gray);
+    }
+
+    .empty-state h3 {
+      color: var(--udf-blue);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚀 Gerenciador de Projetos</h1>
+    <p>Unidade 3 – Low Code/No Code/Vibecode</p>
+  </header>
+
+  <div class="container">
+    <!-- Estatísticas -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="total-grupos">0</div>
+        <div class="stat-label">Grupos Registrados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="total-ativos">0</div>
+        <div class="stat-label">Projetos Ativos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="total-entregues">0</div>
+        <div class="stat-label">Projetos Entregues</div>
+      </div>
+    </div>
+
+    <!-- Abas de Navegação -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="abrirAba('dashboard')">📊 Dashboard</button>
+      <button class="tab-btn" onclick="abrirAba('registro')">📝 Registrar Grupo</button>
+      <button class="tab-btn" onclick="abrirAba('cronograma')">📅 Cronograma</button>
+      <button class="tab-btn" onclick="abrirAba('galeria')">🎨 Galeria de Projetos</button>
+    </div>
+
+    <!-- ABA: Dashboard -->
+    <div id="dashboard" class="tab-content active">
+      <div class="alert info">
+        <strong>ℹ️ Informação:</strong> Acompanhe aqui o progresso de todos os grupos e seus respectivos projetos.
+      </div>
+      <div id="dashboard-content"></div>
+    </div>
+
+    <!-- ABA: Registro de Grupo -->
+    <div id="registro" class="tab-content">
+      <div class="card">
+        <h2>Registrar Novo Grupo</h2>
+        <form id="form-registro" onsubmit="registrarGrupo(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome-grupo">Nome do Grupo *</label>
+              <input type="text" id="nome-grupo" required placeholder="Ex: Grupo A">
+            </div>
+            <div class="form-group">
+              <label for="num-integrantes">Número de Integrantes (1-3) *</label>
+              <input type="number" id="num-integrantes" min="1" max="3" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="integrantes-nomes">Nomes dos Integrantes *</label>
+            <textarea id="integrantes-nomes" required placeholder="Digite os nomes separados por vírgula&#10;Ex: João Silva, Maria Santos, Pedro Costa"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="titulo-projeto">Título do Projeto *</label>
+            <input type="text" id="titulo-projeto" required placeholder="Ex: Sistema de Agendamento">
+          </div>
+
+          <div class="form-group">
+            <label for="descricao-projeto">Descrição do Projeto *</label>
+            <textarea id="descricao-projeto" required placeholder="Descreva brevemente o que seu projeto fará..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="plataforma">Plataforma Escolhida *</label>
+              <select id="plataforma" required>
+                <option value="">-- Selecione --</option>
+                <option value="Bubble">Bubble</option>
+                <option value="Make">Make (Integromat)</option>
+                <option value="Zapier">Zapier</option>
+                <option value="FlutterFlow">FlutterFlow</option>
+                <option value="Webflow">Webflow</option>
+                <option value="AppSheet">AppSheet</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="link-projeto">Link do Projeto</label>
+              <input type="url" id="link-projeto" placeholder="https://seu-projeto.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="justificativa">Justificativa da Plataforma</label>
+            <textarea id="justificativa" placeholder="Por que escolheu essa plataforma?"></textarea>
+          </div>
+
+          <button type="submit">✅ Registrar Grupo</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ABA: Cronograma -->
+    <div id="cronograma" class="tab-content">
+      <div class="card">
+        <h2>📅 Cronograma de Aulas - Unidade 3</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>27/04 – Introdução ao Low Code/No Code</h4>
+              <p><strong>Objetivo:</strong> Reconhecer potencialidades de abordagens visuais.</p>
+              <p><strong>Atividade:</strong> Demonstração de plataformas (Bubble, Make).</p>
+              <p><strong>Competência:</strong> Identificar como ferramentas visuais aceleram o desenvolvimento.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>04/05 – Vibecode e Integração Leve</h4>
+              <p><strong>Objetivo:</strong> Desenvolver soluções com código leve e integração de IA.</p>
+              <p><strong>Atividade:</strong> Exercício prático: criar aplicação híbrida.</p>
+              <p><strong>Competência:</strong> Explorar o conceito de Vibecode.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>11/05 – Limitações e Potencialidades</h4>
+              <p><strong>Objetivo:</strong> Avaliar vantagens e restrições do uso de low code/no code.</p>
+              <p><strong>Atividade:</strong> Discussão crítica + mini-projeto.</p>
+              <p><strong>Competência:</strong> Desenvolver pensamento crítico sobre limites e possibilidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA: Galeria -->
+    <div id="galeria" class="tab-content">
+      <h2>🎨 Galeria de Projetos Entregues</h2>
+      <div id="galeria-content" class="grid-projetos"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 - UDF | Disciplina: Engenharia de Prompt e Aplicações em IA | Profª Kadidja Valéria</p>
+  </footer>
+
+  <script>
+    // Dados dos projetos
+    let projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+
+    // Inicializar aplicação
+    function inicializar() {
+      atualizarEstatisticas();
+      atualizarDashboard();
+      atualizarGaleria();
+    }
+
+    // Abrir aba
+    function abrirAba(nome) {
+      // Remover active de todas as abas
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Adicionar active à aba selecionada
+      document.getElementById(nome).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Registrar novo grupo
+    function registrarGrupo(event) {
+      event.preventDefault();
+
+      const projeto = {
+        id: Date.now(),
+        nomeGrupo: document.getElementById('nome-grupo').value,
+        numIntegrantes: document.getElementById('num-integrantes').value,
+        integranteNomes: document.getElementById('integrantes-nomes').value,
+        tituloProjetoo: document.getElementById('titulo-projeto').value,
+        descricao: document.getElementById('descricao-projeto').value,
+        plataforma: document.getElementById('plataforma').value,
+        linkProjeto: document.getElementById('link-projeto').value,
+        justificativa: document.getElementById('justificativa').value,
+        dataCriacao: new Date().toLocaleDateString('pt-BR'),
+        status: 'em progresso'
+      };
+
+      projetos.push(projeto);
+      localStorage.setItem('projetos', JSON.stringify(projetos));
+
+      // Mostrar alerta de sucesso
+      mostrarAlerta('Grupo registrado com sucesso!', 'success');
+
+      // Limpar formulário
+      document.getElementById('form-registro').reset();
+
+      // Atualizar dashboard
+      atualizarEstatisticas();
+      atualizarDashboard();
+    }
+
+    // Atualizar estatísticas
+    function atualizarEstatisticas() {
+      document.getElementById('total-grupos').textContent = projetos.length;
+      
+      const ativos = projetos.filter(p => p.status === 'em progresso').length;
+      document.getElementById('total-ativos').textContent = ativos;
+      
+      const entregues = projetos.filter(p => p.status === 'entregue').length;
+      document.getElementById('total-entregues').textContent = entregues;
+    }
+
+    // Atualizar dashboard
+    function atualizarDashboard() {
+      const content = document.getElementById('dashboard-content');
+      
+      if (projetos.length === 0) {
+        content.innerHTML = `
+          <div class="empty-state">
+            <h3>Nenhum grupo registrado ainda</h3>
+            <p>Clique em "Registrar Grupo" para começar!</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      projetos.forEach(projeto => {
+        const statusClass = projeto.status === 'entregue' ? 'completed' : 'active';
+        const statusBadge = projeto.status === 'entregue' ? 'Entregue' : 'Em Progresso';
+        
+        html += `
+          <div class="card ${projeto.status === 'entregue' ? 'completed' : 'active'}">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+              <div>
+                <h3>${projeto.nomeGrupo}</h3>
+                <p><strong>${projeto.tituloProjetoo}</strong></p>
+              </div>
+              <span class="badge status-${statusClass}">${statusBadge}</span>
+            </div>
+            
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="meta-label">👥 Integrantes:</span>
+                <span>${projeto.numIntegrantes}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">🛠️ Plataforma:</span>
+                <span>${projeto.plataforma}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">📅 Registrado em:</span>
+                <span>${projeto.dataCriacao}</span>
+              </div>
+            </div>
+
+            <p><strong>Descrição:</strong> ${projeto.descricao}</p>
+            
+            <p><strong>Integrantes:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+              ${projeto.integranteNomes.split(',').map(nome => `<li>${nome.trim()}</li>`).join('')}
+            </ul>
+
+            ${projeto.justificativa ? `<p><strong>Justificativa da Plataforma:</strong> ${projeto.justificativa}</p>` : ''}
+
+            <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              ${projeto.linkProjeto ? `<a href="${projeto.linkProjeto}" target="_blank" style="background-color: var(--info); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none;">🔗 Acessar Projeto</a>` : ''}
+              <button onclick="alterarStatus(${projeto.id})" style="background-color: var(--udf-blue);">
+                ${projeto.status === 'em progresso' ? '✅ Marcar como Entregue' : '🔄 Reabrir'}
+              </button>
+              <button onclick="excluirProjeto(${projeto.id})" style="background-color: #dc3545;">🗑️ Excluir</button>
+            </div>
+          </div>
+        `;
+      });
+
+      content.innerHTML = html;
+    }
+
+    // Atualizar galeria
+    function atualizarGaleria() {
+      const content = document.getElementById('galeria-content');
+      const entregues = projetos.filter(p => p.status === 'entregue');
+
+      if (entregues.length === 0) {
+        content.innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1;">
+            <h3>Nenhum projeto entregue ainda</h3>
+            <p>Os projetos aparecerão aqui conforme forem finalizados.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      entregues.forEach(projeto => {
+        html += `
+          <div class="projeto-card">
+            <div class="projeto-header">
+              <h4>${projeto.nomeGrupo}</h4>
+              <p style="margin: 0; font-size: 0.9rem;">${projeto.tituloProjetoo}</p>
+            </div>
+            <div class="projeto-body">
+              <p><strong>Plataforma:</strong> ${projeto.plataforma}</p>
+              <p><strong>Integrantes:</strong> ${projeto.numIntegrantes}</p>
+              <p>${projeto.descricao}</p>
+              ${projeto.linkProjeto ? `<a href="${projeto.linkProjeto}" target="_blank" style="color: var(--udf-red); text-decoration: none; font-weight: bold;">→ Visualizar Projeto</a>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      content.innerHTML = html;
+    }
+
+    // Alterar status do projeto
+    function alterarStatus(id) {
+      const projeto = projetos.find(p => p.id === id);
+      if (projeto) {
+        projeto.status = projeto.status === 'em progresso' ? 'entregue' : 'em progresso';
+        localStorage.setItem('projetos', JSON.stringify(projetos));
+        atualizarEstatisticas();
+        atualizarDashboard();
+        atualizarGaleria();
+        mostrarAlerta('Status atualizado!', 'success');
+      }
+    }
+
+    // Excluir projeto
+    function excluirProjeto(id) {
+      if (confirm('Tem certeza que deseja excluir este projeto?')) {
+        projetos = projetos.filter(p => p.id !== id);
+        localStorage.setItem('projetos', JSON.stringify(projetos));
+        atualizarEstatisticas();
+        atualizarDashboard();
+        atualizarGaleria();
+        mostrarAlerta('Projeto excluído!', 'success');
+      }
+    }
+
+    // Mostrar alerta
+    function mostrarAlerta(mensagem, tipo) {
+      const alerta = document.createElement('div');
+      alerta.className = `alert ${tipo}`;
+      alerta.textContent = mensagem;
+      
+      const container = document.querySelector('.container');
+      container.insertBefore(alerta, container.firstChild);
+
+      setTimeout(() => {
+        alerta.remove();
+      }, 3000);
+    }
+
+    // Inicializar ao carregar a página
+    window.addEventListener('load', inicializar);
+  </script>
+</body>
+</html>
