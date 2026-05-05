@@ -661,30 +661,9 @@
                 <label for="plataforma">Plataforma Escolhida *</label>
                 <select id="plataforma" required onchange="atualizarDescricaoPlataforma()">
                   <option value="">-- Selecione uma plataforma --</option>
-                  <optgroup label="🌐 No Code">
-                    <option value="Bubble">Bubble - Aplicações Web Completas</option>
-                    <option value="Wix">Wix - Criação de Sites</option>
-                    <option value="Webflow">Webflow - Design Web Responsivo</option>
-                    <option value="Adalo">Adalo - Apps Mobile</option>
-                    <option value="Notion">Notion - Bases de Dados</option>
-                    <option value="Airtable">Airtable - Automação de Processos</option>
-                  </optgroup>
-                  <optgroup label="⚡ Low Code">
-                    <option value="OutSystems">OutSystems - Apps Corporativos</option>
-                    <option value="Power Apps">Power Apps - Ecossistema Microsoft</option>
-                    <option value="Mendix">Mendix - Desenvolvimento Ágil</option>
-                    <option value="FlutterFlow">FlutterFlow - Apps Multi-plataforma</option>
-                    <option value="AppSheet">AppSheet - IA Integrada</option>
-                  </optgroup>
-                  <optgroup label="🔌 Automação">
-                    <option value="Zapier">Zapier - Integrações</option>
-                    <option value="Make">Make (Integromat) - Workflows</option>
-                  </optgroup>
-                  <optgroup label="💡 Vibecode">
-                    <option value="Firebase">Firebase - Backend Leve</option>
-                    <option value="Supabase">Supabase - Open Source</option>
-                    <option value="Replit">Replit - Codificação Rápida</option>
-                  </optgroup>
+                  <option value="Bubble">🌐 Bubble - Aplicações Web Completas (No Code)</option>
+                  <option value="Webflow">🌐 Webflow - Design Web Responsivo (No Code)</option>
+                  <option value="Firebase">💡 Firebase - Backend Leve (Vibecode)</option>
                 </select>
               </div>
               <div class="form-group">
@@ -698,7 +677,7 @@
               <textarea id="justificativa" required placeholder="Por que escolheu essa plataforma? Quais funcionalidades ela oferece para seu projeto?"></textarea>
             </div>
 
-            <div id="plataforma-descricao" style="background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--udf-cyan); margin-bottom: 1rem; display: none;">
+            <div id="plataforma-descricao" style="background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--udf-cyan); margin-bottom: 1.5rem; display: none;">
               <strong style="color: var(--udf-blue);">ℹ️ Sobre a plataforma:</strong>
               <p id="descricao-plataforma-texto" style="margin-top: 0.5rem; font-size: 0.9rem;"></p>
             </div>
@@ -750,134 +729,101 @@
       <div id="plataformas" class="tab-content">
         <div class="alert info">
           <div class="alert-icon">🛠️</div>
-          <div><strong>Referências da Alura:</strong> Conheça as principais plataformas low code/no code recomendadas para o desenvolvimento de aplicações modernas.</div>
+          <div><strong>Plataformas Recomendadas para Unidade 3:</strong> Escolha uma das três opções principais para desenvolver seu projeto de Low Code/No Code.</div>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
-          <!-- NO CODE -->
+          <!-- BUBBLE -->
           <div class="card">
-            <h3>🌐 NO CODE</h3>
-            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;">Plataformas que permitem criar aplicações completas sem escrever código.</p>
+            <h3>🌐 Bubble</h3>
+            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;"><strong>Categoria:</strong> No Code</p>
             
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Bubble</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Aplicações web completas, MVPs, dashboards interativos e plataformas de marketplace.</p>
-              <a href="https://bubble.io" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ bubble.io</a>
+              <strong>O que é?</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Plataforma completa para criar aplicações web interativas, MVPs, dashboards e plataformas de marketplace sem escrever uma única linha de código.</p>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Wix</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Criação de sites profissionais, portfólios e lojas online com design intuitivo.</p>
-              <a href="https://www.wix.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ wix.com</a>
+              <strong>Principais Funcionalidades:</strong>
+              <ul style="font-size: 0.9rem; margin-top: 0.5rem; margin-left: 1rem;">
+                <li>Editor visual intuitivo</li>
+                <li>Banco de dados integrado</li>
+                <li>Autenticação de usuários</li>
+                <li>Integrações com APIs</li>
+              </ul>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Webflow</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Design web responsivo com controle visual avançado, sem perder qualidade.</p>
-              <a href="https://webflow.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ webflow.com</a>
+              <strong>Ideal Para:</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Projetos de negócios, plataformas SaaS, MVPs e soluções interativas rápidas.</p>
             </div>
 
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Adalo</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Criação de aplicações mobile nativas sem programação, para iOS e Android.</p>
-              <a href="https://www.adalo.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ adalo.com</a>
-            </div>
-
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Notion</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Bases de dados, wikis, automações e estruturação de processos colaborativos.</p>
-              <a href="https://www.notion.so" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ notion.so</a>
-            </div>
-
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Airtable</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Automação de processos, gerenciamento de projetos e integração com outras ferramentas.</p>
-              <a href="https://airtable.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ airtable.com</a>
-            </div>
+            <a href="https://bubble.io" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem;">→ Acessar Bubble.io</a>
           </div>
 
-          <!-- LOW CODE -->
+          <!-- WEBFLOW -->
           <div class="card">
-            <h3>⚡ LOW CODE</h3>
-            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;">Plataformas que combinam interface visual com código para soluções enterprise.</p>
+            <h3>🌐 Webflow</h3>
+            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;"><strong>Categoria:</strong> No Code</p>
             
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>OutSystems</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Criação rápida de softwares empresariais com escalabilidade e integração robusta.</p>
-              <a href="https://www.outsystems.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ outsystems.com</a>
+              <strong>O que é?</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Designer web visual avançado que permite criar sites responsivos e componentes personalizados com controle total sobre CSS, sem código.</p>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Power Apps (Microsoft)</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Soluções empresariais internas com integração ao ecossistema Microsoft.</p>
-              <a href="https://powerapps.microsoft.com/pt-br/" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ powerapps.microsoft.com</a>
+              <strong>Principais Funcionalidades:</strong>
+              <ul style="font-size: 0.9rem; margin-top: 0.5rem; margin-left: 1rem;">
+                <li>Design responsivo avançado</li>
+                <li>Animações e interações</li>
+                <li>CMS integrado</li>
+                <li>Hospedagem automática</li>
+              </ul>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Mendix</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Desenvolvimento ágil de aplicações corporativas com colaboração em tempo real.</p>
-              <a href="https://www.mendix.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ mendix.com</a>
+              <strong>Ideal Para:</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Sites de agência, portfólios profissionais, landing pages e e-commerce com design personalizado.</p>
             </div>
 
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>FlutterFlow</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Apps multi-plataforma (iOS, Android, Web) com pouco código e alta qualidade.</p>
-              <a href="https://flutterflow.io" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ flutterflow.io</a>
-            </div>
-
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>AppSheet (Google Cloud)</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Inteligência Artificial integrada para criar aplicações smart com automações.</p>
-              <a href="https://www.appsheet.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ appsheet.com</a>
-            </div>
+            <a href="https://webflow.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem;">→ Acessar Webflow.com</a>
           </div>
 
-          <!-- AUTOMAÇÃO E VIBECODE -->
+          <!-- FIREBASE -->
           <div class="card">
-            <h3>🔌 AUTOMAÇÃO & 💡 VIBECODE</h3>
-            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;">Plataformas para integração, workflows e codificação leve.</p>
+            <h3>💡 Firebase</h3>
+            <p style="color: var(--udf-gray-dark); margin-bottom: 1.5rem;"><strong>Categoria:</strong> Vibecode</p>
             
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Zapier</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Integrações entre aplicações e automação de workflows sem programação.</p>
-              <a href="https://zapier.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ zapier.com</a>
+              <strong>O que é?</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Plataforma backend leve do Google com banco de dados em tempo real, autenticação, armazenamento e hospedagem automática para aplicações rápidas.</p>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Make (Integromat)</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Automação visual de processos e integrações complexas entre serviços.</p>
-              <a href="https://www.make.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ make.com</a>
+              <strong>Principais Funcionalidades:</strong>
+              <ul style="font-size: 0.9rem; margin-top: 0.5rem; margin-left: 1rem;">
+                <li>Realtime Database</li>
+                <li>Autenticação gerenciada</li>
+                <li>Cloud Storage</li>
+                <li>Cloud Functions para lógica backend</li>
+              </ul>
             </div>
 
             <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Firebase (Google)</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Backend leve com banco de dados em tempo real, autenticação e hospedagem.</p>
-              <a href="https://firebase.google.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ firebase.google.com</a>
+              <strong>Ideal Para:</strong>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Aplicações com dados em tempo real, chat, notificações, jogos e integrações com IA via APIs.</p>
             </div>
 
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Supabase</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Alternativa open source ao Firebase com PostgreSQL e APIs automáticas.</p>
-              <a href="https://supabase.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ supabase.com</a>
-            </div>
-
-            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--udf-gray-light); border-radius: 8px;">
-              <strong>Replit</strong>
-              <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ambiente de desenvolvimento online para prototipagem rápida e aprendizado.</p>
-              <a href="https://replit.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">→ replit.com</a>
-            </div>
+            <a href="https://firebase.google.com" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem;">→ Acessar Firebase.google.com</a>
           </div>
         </div>
 
         <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%); border-left-color: var(--success);">
-          <h3>💡 Dicas para Escolher a Melhor Plataforma</h3>
+          <h3>💡 Como Escolher Sua Plataforma?</h3>
           <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li><strong>Análise do Escopo:</strong> Sites? Apps? Automações? Escolha de acordo com seu objetivo.</li>
-            <li><strong>Integração:</strong> Verifique se a plataforma se integra com ferramentas que você já usa.</li>
-            <li><strong>Escalabilidade:</strong> Seu projeto vai crescer? Prefira low code para melhor controle.</li>
-            <li><strong>Custo:</strong> Algumas têm planos gratuitos ou trial, teste antes de decidir.</li>
-            <li><strong>Comunidade:</strong> Comunidades ativas oferecem tutoriais, templates e suporte.</li>
-            <li><strong>Curva de Aprendizado:</strong> No code é mais intuitivo; low code exige um pouco mais de lógica.</li>
+            <li><strong>Bubble:</strong> Escolha se quer uma plataforma tudo-em-um rápida para criar apps web completas.</li>
+            <li><strong>Webflow:</strong> Escolha se quer controle total sobre design e precisa de um site visualmente impactante.</li>
+            <li><strong>Firebase:</strong> Escolha se quer combinar código (HTML/CSS/JS) com backend robusto e integração de IA.</li>
           </ul>
         </div>
       </div>
@@ -901,22 +847,9 @@
 
     // Descrições das plataformas
     const descricoesPlataformas = {
-      'Bubble': 'Plataforma no code completa para criar aplicações web interativas, MVPs e marketplaces sem programação.',
-      'Wix': 'Ferramenta intuitiva para criar sites profissionais, portfólios e lojas online com design responsivo.',
-      'Webflow': 'Designer web visual com controle avançado de CSS, perfeita para projetos de design personalizado.',
-      'Adalo': 'Crie aplicações mobile nativas para iOS e Android sem escrever uma única linha de código.',
-      'Notion': 'Plataforma all-in-one para bases de dados, wikis, automações e gestão de projetos.',
-      'Airtable': 'Alternativa moderna para spreadsheets com automações, forms e integrações poderosas.',
-      'OutSystems': 'Plataforma low code enterprise para criar aplicações corporativas escaláveis e robustas.',
-      'Power Apps': 'Ferramenta Microsoft para criar apps empresariais com integração ao ecossistema Office 365.',
-      'Mendix': 'Plataforma low code para desenvolvimento ágil com colaboração em tempo real entre equipes.',
-      'FlutterFlow': 'Crie apps para iOS, Android e Web com pouco código, mantendo alta qualidade visual.',
-      'AppSheet': 'Plataforma com IA integrada para criar aplicações smart com automações inteligentes.',
-      'Zapier': 'Automatize integrações entre apps populares sem escrever código, conectando seus serviços.',
-      'Make': 'Plataforma visual de automação para criar workflows complexos entre múltiplas aplicações.',
-      'Firebase': 'Backend do Google com banco em tempo real, autenticação e hospedagem integradas.',
-      'Supabase': 'Alternativa open source ao Firebase, baseada em PostgreSQL com APIs automáticas.',
-      'Replit': 'Ambiente online para prototipagem rápida, educação e desenvolvimento colaborativo.'
+      'Bubble': 'Plataforma no code completa para criar aplicações web interativas, MVPs e marketplaces sem programação. Possui editor visual intuitivo, banco de dados integrado e suporte para integrações com APIs.',
+      'Webflow': 'Designer web visual com controle avançado de CSS, perfeita para projetos de design personalizado. Crie sites responsivos com animações e interações sem escrever código.',
+      'Firebase': 'Backend leve do Google com banco de dados em tempo real, autenticação e hospedagem integradas. Ideal para combinar código leve com backend robusto e APIs de IA.'
     };
 
     // Inicializar aplicação
@@ -1004,120 +937,75 @@
 
     // Atualizar dashboard
     function atualizarDashboard() {
-      const content = document.getElementById('dashboard-content');
+      const dashboard = document.getElementById('dashboard-content');
       
       if (projetos.length === 0) {
-        content.innerHTML = `
+        dashboard.innerHTML = `
           <div class="empty-state">
-            <div class="empty-state-icon">📋</div>
-            <h3>Nenhum grupo registrado ainda</h3>
-            <p>Clique em "Registrar Grupo" para iniciar sua jornada no desenvolvimento com Low Code/No Code!</p>
+            <div class="empty-state-icon">📭</div>
+            <h3>Nenhum projeto registrado ainda</h3>
+            <p>Acesse a aba "Registrar Grupo" para começar!</p>
           </div>
         `;
         return;
       }
 
-      let html = '';
-      projetos.forEach(projeto => {
-        const statusClass = projeto.status === 'entregue' ? 'completed' : 'active';
-        const statusText = projeto.status === 'entregue' ? '✅ Entregue' : '⚙️ Em Progresso';
-        
-        html += `
-          <div class="card ${projeto.status === 'entregue' ? 'completed' : 'active'}">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
-              <div>
-                <h3>${projeto.nomeGrupo}</h3>
-                <p style="font-size: 1.1rem; color: var(--udf-gray-dark); margin: 0.5rem 0;"><strong>${projeto.tituloProjetoo}</strong></p>
-              </div>
-              <span class="badge status-${statusClass}">${statusText}</span>
+      dashboard.innerHTML = projetos.map(projeto => `
+        <div class="card ${projeto.status === 'entregue' ? 'completed' : 'pending'}">
+          <h3>${projeto.tituloProjetoo}</h3>
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="meta-label">👥 Grupo:</span>
+              <span>${projeto.nomeGrupo}</span>
             </div>
-            
-            <div class="card-meta">
-              <div class="meta-item">
-                <span class="meta-label">👥 Integrantes:</span>
-                <span>${projeto.numIntegrantes}</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">🛠️ Plataforma:</span>
-                <span class="plataforma-badge">${projeto.plataforma}</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">📅 Registrado:</span>
-                <span>${projeto.dataCriacao}</span>
-              </div>
-            </div>
-
-            <div style="background: var(--udf-gray-light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-              <p><strong>📝 Descrição:</strong></p>
-              <p>${projeto.descricao}</p>
-            </div>
-            
-            <p><strong>👥 Integrantes:</strong></p>
-            <ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.8;">
-              ${projeto.integranteNomes.split(',').map(nome => `<li>${nome.trim()}</li>`).join('')}
-            </ul>
-
-            <div style="background: var(--udf-gray-light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-              <p><strong>💡 Justificativa da Plataforma:</strong></p>
-              <p>${projeto.justificativa}</p>
-            </div>
-
-            <div class="button-group">
-              ${projeto.linkProjeto ? `<a href="${projeto.linkProjeto}" target="_blank" style="background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700;">🔗 Acessar Projeto</a>` : ''}
-              <button onclick="alterarStatus(${projeto.id})" class="success">
-                ${projeto.status === 'em progresso' ? '✅ Marcar como Entregue' : '🔄 Reabrir Projeto'}
-              </button>
-              <button onclick="excluirProjeto(${projeto.id})" class="danger">🗑️ Excluir Projeto</button>
+            <div class="meta-item">
+              <span class="meta-label">🛠️ Plataforma:</span>
+              <span class="plataforma-badge">${projeto.plataforma}</span>
             </div>
           </div>
-        `;
-      });
 
-      content.innerHTML = html;
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="meta-label">👥 Integrantes:</span>
+              <span>${projeto.integranteNomes}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">📅 Data:</span>
+              <span>${projeto.dataCriacao}</span>
+            </div>
+          </div>
+
+          <div style="margin: 1rem 0;">
+            <strong>Descrição:</strong>
+            <p style="margin-top: 0.5rem; color: var(--udf-gray-dark);">${projeto.descricao}</p>
+          </div>
+
+          <div style="margin: 1rem 0;">
+            <strong>Justificativa da Plataforma:</strong>
+            <p style="margin-top: 0.5rem; color: var(--udf-gray-dark);">${projeto.justificativa}</p>
+          </div>
+
+          ${projeto.linkProjeto ? `
+            <div style="margin: 1rem 0;">
+              <a href="${projeto.linkProjeto}" target="_blank" style="color: var(--udf-cyan); text-decoration: none; font-weight: bold;">🔗 Acessar Projeto</a>
+            </div>
+          ` : ''}
+
+          <div class="button-group">
+            <span class="badge ${projeto.status === 'em progresso' ? 'status-active' : 'status-completed'}">
+              ${projeto.status === 'em progresso' ? '⚙️ Em Progresso' : '✅ Entregue'}
+            </span>
+            <button class="secondary" onclick="alternarStatus(${projeto.id})">
+              ${projeto.status === 'em progresso' ? '✅ Marcar como Entregue' : '🔄 Reabrir'}
+            </button>
+            <button class="danger" onclick="removerProjeto(${projeto.id})">🗑️ Remover</button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    // Atualizar galeria
-    function atualizarGaleria() {
-      const content = document.getElementById('galeria-content');
-      const entregues = projetos.filter(p => p.status === 'entregue');
-
-      if (entregues.length === 0) {
-        content.innerHTML = `
-          <div class="empty-state" style="grid-column: 1/-1;">
-            <div class="empty-state-icon">🎨</div>
-            <h3>Nenhum projeto entregue ainda</h3>
-            <p>Os projetos aparecerão aqui conforme forem finalizados e marcados como entregues.</p>
-          </div>
-        `;
-        return;
-      }
-
-      let html = '';
-      entregues.forEach(projeto => {
-        html += `
-          <div class="projeto-card">
-            <div class="projeto-header">
-              <h4>${projeto.nomeGrupo}</h4>
-              <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">${projeto.tituloProjetoo}</p>
-            </div>
-            <div class="projeto-body">
-              <p><strong>🛠️ Plataforma:</strong> <span class="plataforma-badge">${projeto.plataforma}</span></p>
-              <p><strong>👥 Integrantes:</strong> ${projeto.numIntegrantes}</p>
-              <p style="margin: 1rem 0;"><strong>Sobre o Projeto:</strong></p>
-              <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">${projeto.descricao}</p>
-              <p style="margin: 1rem 0 0.5rem 0;"><strong>✍️ Integrantes:</strong></p>
-              <p style="font-size: 0.85rem;">${projeto.integranteNomes}</p>
-              ${projeto.linkProjeto ? `<a href="${projeto.linkProjeto}" target="_blank" style="display: inline-block; margin-top: 1rem; color: var(--udf-cyan); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; background: var(--udf-gray-light); border-radius: 6px; border-left: 3px solid var(--udf-cyan);">→ Visualizar Projeto</a>` : ''}
-            </div>
-          </div>
-        `;
-      });
-
-      content.innerHTML = html;
-    }
-
-    // Alterar status do projeto
-    function alterarStatus(id) {
+    // Alternar status
+    function alternarStatus(id) {
       const projeto = projetos.find(p => p.id === id);
       if (projeto) {
         projeto.status = projeto.status === 'em progresso' ? 'entregue' : 'em progresso';
@@ -1126,21 +1014,53 @@
         atualizarEstatisticas();
         atualizarDashboard();
         atualizarGaleria();
-        mostrarAlerta(projeto.status === 'entregue' ? '✅ Projeto marcado como entregue!' : '🔄 Projeto reabert o!', 'success');
       }
     }
 
-    // Excluir projeto
-    function excluirProjeto(id) {
-      const projeto = projetos.find(p => p.id === id);
-      if (confirm(`Tem certeza que deseja excluir o projeto "${projeto.nomeGrupo}"? Esta ação não pode ser desfeita.`)) {
+    // Remover projeto
+    function removerProjeto(id) {
+      if (confirm('Tem certeza que deseja remover este projeto?')) {
         projetos = projetos.filter(p => p.id !== id);
         localStorage.setItem('projetos', JSON.stringify(projetos));
         atualizarEstatisticas();
         atualizarDashboard();
         atualizarGaleria();
-        mostrarAlerta('🗑️ Projeto excluído com sucesso!', 'success');
+        mostrarAlerta('✅ Projeto removido com sucesso!', 'success');
       }
+    }
+
+    // Atualizar galeria
+    function atualizarGaleria() {
+      const galeria = document.getElementById('galeria-content');
+      const projetosEntregues = projetos.filter(p => p.status === 'entregue');
+
+      if (projetosEntregues.length === 0) {
+        galeria.innerHTML = `
+          <div class="empty-state" style="grid-column: 1/-1;">
+            <div class="empty-state-icon">🎨</div>
+            <h3>Nenhum projeto entregue ainda</h3>
+            <p>Os projetos entregues aparecerão aqui!</p>
+          </div>
+        `;
+        return;
+      }
+
+      galeria.innerHTML = projetosEntregues.map(projeto => `
+        <div class="projeto-card">
+          <div class="projeto-header">
+            <h4>${projeto.tituloProjetoo}</h4>
+            <p style="opacity: 0.9; font-size: 0.9rem;">Grupo: ${projeto.nomeGrupo}</p>
+          </div>
+          <div class="projeto-body">
+            <p><strong>Plataforma:</strong> <span class="plataforma-badge">${projeto.plataforma}</span></p>
+            <p style="margin-top: 0.75rem;"><strong>Descrição:</strong></p>
+            <p style="color: var(--udf-gray-dark); font-size: 0.9rem;">${projeto.descricao}</p>
+            ${projeto.linkProjeto ? `
+              <a href="${projeto.linkProjeto}" target="_blank" style="display: inline-block; margin-top: 1rem; color: var(--udf-cyan); text-decoration: none; font-weight: bold;">🔗 Ver Projeto</a>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
     }
 
     // Mostrar alerta
@@ -1148,24 +1068,17 @@
       const alerta = document.createElement('div');
       alerta.className = `alert ${tipo}`;
       alerta.innerHTML = `
-        <div class="alert-icon">
-          ${tipo === 'success' ? '✅' : 'ℹ️'}
-        </div>
+        <div class="alert-icon">${tipo === 'success' ? '✅' : 'ℹ️'}</div>
         <div>${mensagem}</div>
       `;
       
-      const container = document.querySelector('.container-content');
-      container.insertBefore(alerta, container.firstChild);
-
-      setTimeout(() => {
-        alerta.style.opacity = '0';
-        alerta.style.transition = 'opacity 0.3s ease';
-        setTimeout(() => alerta.remove(), 300);
-      }, 3500);
+      document.querySelector('.container-content').insertBefore(alerta, document.querySelector('.stats').nextElementSibling);
+      
+      setTimeout(() => alerta.remove(), 3000);
     }
 
-    // Inicializar ao carregar a página
-    window.addEventListener('load', inicializar);
+    // Inicializar quando a página carregar
+    window.addEventListener('DOMContentLoaded', inicializar);
   </script>
 </body>
 </html>
